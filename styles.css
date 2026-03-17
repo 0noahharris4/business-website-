@@ -1,0 +1,412 @@
+
+/* -----------------------------------------------------------
+   CLEAN CORPORATE THEME — Modern, Professional, Stripe‑Inspired
+----------------------------------------------------------- */
+
+/* Root variables */
+:root {
+  --accent: #0b6efd;
+  --accent-dark: #0957c3;
+  --text: #0f172a;
+  --muted: #64748b;
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --maxw: 1180px;
+
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+/* Reset */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Layout container */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* -----------------------------------------------------------
+   HERO / HEADER
+----------------------------------------------------------- */
+.header {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  padding: 60px 0;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Soft gradient background behind hero */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #e8f0ff 0%, #f5f7fa 60%);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.brand {
+  flex: 1;
+}
+
+.h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+}
+
+.cta-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn.secondary:hover {
+  background: rgba(11, 110, 253, 0.08);
+}
+
+/* Hero sidebar */
+.hero-meta {
+  min-width: 260px;
+  max-width: 340px;
+  background: #ffffffaa;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+/* -----------------------------------------------------------
+   SECTIONS
+----------------------------------------------------------- */
+.section {
+  padding: 60px 0;
+}
+
+.section h2 {
+  margin: 0 0 16px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.small {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* -----------------------------------------------------------
+   PROJECT CARDS
+----------------------------------------------------------- */
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.project {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.project .img-wrap {
+  height: 220px;
+  max-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg);
+}
+
+.project .img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* For explicit preserve tweaks (keeps backward compatibility) */
+.project img.preserve {
+  padding: 0;
+  background-color: transparent;
+}
+
+@media (max-width: 520px) {
+  .project .img-wrap {
+    height: 160px;
+    max-height: 30vh;
+  }
+}
+
+@media (min-width: 900px) {
+  .project .img-wrap {
+    height: 260px;
+  }
+}
+
+.project .bd {
+  padding: 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+
+.project .meta {
+  /* flow caption left-to-right across the card; do not stretch */
+  margin-top: 12px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
+  display: block;
+  text-align: left;
+  max-width: 100%;
+  padding: 0;
+}
+
+.project h3 {
+  margin: 8px 0 6px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.project p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+.project .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.project .row .btn {
+  min-width: 140px;
+  text-align: center;
+}
+
+/* -----------------------------------------------------------
+   SERVICES
+----------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.service {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+}
+
+/* Make service cards a column so the CTA sits at the bottom */
+.service {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the final child (CTA container) pushes to the bottom */
+.service > div:last-child {
+  margin-top: auto;
+  /* ensure this rule wins if inline spacing exists */
+  margin-top: auto !important;
+}
+
+/* Make grid items (service cards) stretch to equal heights so CTAs align */
+.grid.cols-3 {
+  align-items: stretch;
+}
+
+.grid.cols-3 .service {
+  height: 100%;
+}
+
+/* Keep service captions aligned by giving the body a consistent minimum height */
+.service .svc-body {
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (max-width: 720px) {
+  .service .svc-body { min-height: 72px; }
+}
+
+.service:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+/* -----------------------------------------------------------
+   ABOUT
+----------------------------------------------------------- */
+.about {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+}
+
+/* -----------------------------------------------------------
+   CONTACT FORM
+----------------------------------------------------------- */
+.form {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+.input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 0.95rem;
+  transition: border 0.2s ease;
+}
+
+.input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.invoice-pay {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 14px;
+}
+
+/* -----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------- */
+footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.icon {
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.icon:hover {
+  color: var(--accent);
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------------- */
+@media (max-width: 720px) {
+  .row2 { grid-template-columns: 1fr; }
+  .header { padding: 40px 0; }
+  .hero-meta { width: 100%; }
+  .about { flex-direction: column; }
+}
