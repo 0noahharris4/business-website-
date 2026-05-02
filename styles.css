@@ -24,6 +24,75 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Binary code background pattern */
+body::before {
+  content: "01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  font-size: 0.8rem;
+  color: rgba(11, 110, 253, 0.88);
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-weight: 400;
+  z-index: -2;
+  pointer-events: none;
+  animation: binaryFlow 15s linear infinite;
+}
+
+body::after {
+  content: "10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01 10 01";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  font-size: 0.8rem;
+  color: rgba(11, 110, 253, 0.75);
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-weight: 400;
+  z-index: -3;
+  pointer-events: none;
+  animation: binaryFlowReverse 22s linear infinite;
+}
+
+@keyframes binaryFlow {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(150px);
+    opacity: 0.25;
+  }
+}
+
+@keyframes binaryFlowReverse {
+  0% {
+    transform: translateY(-150px);
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.15;
+  }
 }
 
 /* Layout container */
@@ -40,7 +109,7 @@ body {
   display: flex;
   gap: 40px;
   align-items: center;
-  padding: 60px 0;
+  padding: 24px 0 60px;
   flex-wrap: wrap;
   position: relative;
 }
@@ -58,6 +127,22 @@ body {
 
 .brand {
   flex: 1;
+  text-align: center;
+}
+
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  margin: -44px auto 56px;
+}
+
+.hero-logo img {
+  max-width: 800px;
+  max-height: 300px;
+  width: min(95%, 800px);
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .h1 {
@@ -74,7 +159,7 @@ body {
 }
 
 .cta-row {
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
@@ -322,8 +407,8 @@ body {
 }
 
 .avatar {
-  width: 180px;
-  height: 180px;
+  width: 210px;
+  height: 210px;
   border-radius: 14px;
   object-fit: cover;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
@@ -404,9 +489,78 @@ footer {
 /* -----------------------------------------------------------
    RESPONSIVE
 ----------------------------------------------------------- */
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 20px;
+  }
+  .hero-logo img {
+    max-height: 250px;
+  }
+  .project .img-wrap {
+    min-height: 180px;
+    max-height: none;
+  }
+  .grid.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
-  .row2 { grid-template-columns: 1fr; }
-  .header { padding: 40px 0; }
-  .hero-meta { width: 100%; }
-  .about { flex-direction: column; }
+  .container {
+    padding: 28px 18px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 0 40px;
+  }
+  .hero-meta {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+  }
+  .about {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about .bio {
+    max-width: 100%;
+  }
+  .avatar {
+    margin: 0 auto;
+  }
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+  .project .img-wrap {
+    height: 160px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 24px 14px;
+  }
+  .h1 {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+  }
+  .cta-row {
+    justify-content: center;
+  }
+  .project .img-wrap {
+    height: 140px;
+  }
+  .hero-logo {
+    margin-bottom: 28px;
+  }
+  .hero-meta {
+    padding: 18px;
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .footer {
+    padding: 28px 0;
+  }
 }
