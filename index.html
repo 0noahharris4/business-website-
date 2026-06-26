@@ -3,29 +3,50 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Data & AI-Powered Solutions & Modern Web Experiences</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Optima Computer Systems | AI Automation, Data & Web</title>
+<meta name="description" content="Optima Computer Systems builds intelligent AI automation, full-stack data applications, and modern web experiences for forward-thinking businesses.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- ── Sticky Navbar ── -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/optima-logo.png" alt="Optima Computer Systems" class="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Project</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
 
+  <!-- ── Hero ── -->
   <header class="header">
     <div class="brand">
       <div class="hero-logo">
-        <img src="images/optima-logo.png" alt="Optima Computer Systems logo">
+        <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/optima-logo.png" alt="Optima Computer Systems logo">
       </div>
-      <h1 class="h1">Software Design, AI Automation & Modern Web Experiences</h1>
+      <div class="hero-badge">AI &nbsp;·&nbsp; Data &nbsp;·&nbsp; Web</div>
+      <h1 class="h1">Software That Works.<br>AI That Delivers.</h1>
+      <p class="lead">We build intelligent automation, data applications, and modern web experiences that give your business a real edge.</p>
       <div class="cta-row">
         <a class="btn" href="#contact">Request a Project</a>
         <a class="btn secondary" href="#projects">View Projects</a>
       </div>
     </div>
+
     <!-- Highlights and quick links -->
     <aside class="hero-meta" aria-label="Highlights and quick links">
       <div class="meta-grid" style="display:grid;gap:10px;">
         <div class="meta-card ai" style="display:flex;gap:10px;align-items:center;">
-          <!-- simple AI/network icon -->
           <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <circle cx="6" cy="6" r="1.6" fill="currentColor"/>
             <circle cx="18" cy="6" r="1.6" fill="currentColor"/>
@@ -38,7 +59,6 @@
           </div>
         </div>
         <div class="meta-card chat" style="display:flex;gap:10px;align-items:center;">
-          <!-- chat icon -->
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
             <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.2" fill="none"/>
           </svg>
@@ -48,7 +68,6 @@
           </div>
         </div>
         <div class="meta-card analytics" style="display:flex;gap:10px;align-items:center;">
-          <!-- mini bar chart -->
           <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="4" y="10" width="3" height="8" fill="currentColor" opacity="0.9"/>
             <rect x="10.5" y="6" width="3" height="12" fill="currentColor" opacity="0.7"/>
@@ -60,7 +79,6 @@
           </div>
         </div>
         <div class="meta-card web" style="display:flex;gap:10px;align-items:center;">
-          <!-- browser/web icon -->
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
             <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
             <path d="M2 8h20" stroke="currentColor" stroke-width="1.2"/>
@@ -75,28 +93,54 @@
         </div>
       </div>
     </aside>
-    <!-- decorative visual (non-interactive) -->
     <div class="hero-visual" aria-hidden="true"></div>
   </header>
 
-  <!-- Projects -->
+  <!-- ── Stats Strip ── -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num">20+</span>
+      <span class="stat-lbl">Projects Delivered</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">15+</span>
+      <span class="stat-lbl">Happy Clients</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-lbl">Core Specializations</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">24h</span>
+      <span class="stat-lbl">Response Time</span>
+    </div>
+  </div>
+
+  <!-- ── Projects ── -->
   <section id="projects" class="section">
+    <div class="section-label">Our Work</div>
     <h2>Project Demos</h2>
     <p class="small">Click "Demo" to launch a live preview or demo link.</p>
     <div class="cards" aria-live="polite">
+
       <article class="project">
         <div class="img-wrap">
-          <img
-            src="images/Screenshot-2026-02-26-071505.png"
-            alt="AI Data Analysis Agent screenshot"
-            class="preserve"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';"
-          >
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/Screenshot-2026-02-26-071505.png" alt="AI Data Analysis Agent screenshot" class="preserve"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
         </div>
         <div class="bd">
           <h3>AI Data Analysis Agent</h3>
           <div class="meta">
             <p>Fully automated data analysis agent that automates data cleaning, exploratory analysis, visualizations, correlation detection, and time-series insights into one unified workflow.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">AI Agent</span>
+            <span class="tag">Pandas</span>
           </div>
           <div class="row">
             <a class="btn" href="https://ai-dataagent.streamlit.app/" target="_blank" rel="noopener">Demo</a>
@@ -106,17 +150,19 @@
 
       <article class="project">
         <div class="img-wrap">
-          <img
-            src="images/Screenshot-2026-02-26-080912.png"
-            alt="PropertyBot Chatbot screenshot"
-            class="preserve"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';"
-          >
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/Screenshot-2026-02-26-080912.png" alt="PropertyBot Chatbot screenshot" class="preserve"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
         </div>
         <div class="bd">
           <h3>AI Property Management Assistant Chatbot</h3>
           <div class="meta">
             <p>Conversational AI chatbot for property and real estate inquiries. Try the live demo to interact with the bot!</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Streamlit</span>
           </div>
           <div class="row">
             <a class="btn" href="https://propertybot.streamlit.app/" target="_blank" rel="noopener">Demo</a>
@@ -126,17 +172,19 @@
 
       <article class="project">
         <div class="img-wrap">
-          <img
-            src="images/Screenshot-2026-02-26-075619.png"
-            alt="AI Server Log Agent screenshot"
-            class="preserve"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';"
-          >
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/Screenshot-2026-02-26-075619.png" alt="AI Server Log Agent screenshot" class="preserve"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
         </div>
         <div class="bd">
           <h3>AI Server Log Agent</h3>
           <div class="meta">
             <p>Agentic AI assistant for server log analysis, automation, and intelligent operations. Try the live demo to see how it works!</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">AI Agent</span>
+            <span class="tag">DevOps</span>
+            <span class="tag">Streamlit</span>
           </div>
           <div class="row">
             <a class="btn" href="https://ai-serveragent.streamlit.app/" target="_blank" rel="noopener">Demo</a>
@@ -146,12 +194,17 @@
 
       <article class="project">
         <div class="img-wrap">
-          <img src="images/steelers-header.png" alt="Steelers fan page header" class="preserve">
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/steelers-header.png" alt="Steelers fan page header" class="preserve">
         </div>
         <div class="bd">
           <h3>Pittsburg Steelers Fan Page Replica</h3>
           <div class="meta">
             <p>A high‑energy Steelers fan experience built with modern HTML & CSS, capturing the team's iconic black‑and‑gold identity through bold visuals, clean layout, and game‑day‑ready design.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Responsive</span>
           </div>
           <div class="row">
             <a class="btn" href="https://0noahharris4.github.io/HTML-CSS/" target="_blank" rel="noopener">Demo</a>
@@ -159,34 +212,42 @@
         </div>
       </article>
 
-        <article class="project">
-          <div class="img-wrap">
-            <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/Screenshot%202026-06-26%20122628.png" alt="Horizon Realty Brokerage screenshot" class="preserve" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
+      <article class="project">
+        <div class="img-wrap">
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/Screenshot%202026-06-26%20122628.png" alt="Horizon Realty Brokerage screenshot" class="preserve"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
+        </div>
+        <div class="bd">
+          <h3>Horizon Realty Brokerage Webpage</h3>
+          <div class="meta">
+            <p>A modern brokerage website experience that blends clean design, strong branding, and intuitive structure—perfect for real estate teams wanting a polished digital footprint.</p>
           </div>
-          <div class="bd">
-            <h3>Horizon Realty Brokerage Webpage</h3>
-            <div class="meta">
-              <p>A modern brokerage website experience that blends clean design, strong branding, and intuitive structure—perfect for real estate teams wanting a polished digital footprint.</p>
-            </div>
-            <div class="row">
-              <a class="btn" href="https://0noahharris4.github.io/RealtySite/" target="_blank" rel="noopener">Demo</a>
-            </div>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
           </div>
-        </article>
+          <div class="row">
+            <a class="btn" href="https://0noahharris4.github.io/RealtySite/" target="_blank" rel="noopener">Demo</a>
+          </div>
+        </div>
+      </article>
 
       <article class="project">
         <div class="img-wrap">
-          <img
-            src="images/diabetes-risk-app.png"
-            alt="Machine Learning Diabetes Risk Prediction Application screenshot"
-            class="preserve"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';"
-          >
+          <img src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/diabetes-risk-app.png" alt="Machine Learning Diabetes Risk Prediction Application screenshot" class="preserve"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450.png?text=Screenshot+not+found';">
         </div>
         <div class="bd">
           <h3>Machine Learning Diabetes Risk Prediction Application</h3>
           <div class="meta">
             <p>A full‑stack machine learning solution that delivers fast, accurate diabetes risk predictions using a robust data pipeline and a clean, interactive Streamlit UI.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">ML</span>
+            <span class="tag">Streamlit</span>
           </div>
           <div class="row">
             <a class="btn" href="https://mlmedical.streamlit.app/" target="_blank" rel="noopener">Demo</a>
@@ -197,12 +258,50 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- ── How We Work ── -->
+  <section id="process" class="section">
+    <div class="section-label">Our Process</div>
+    <h2>How We Work</h2>
+    <p class="small">A clear, collaborative process from first conversation to final launch.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Discover</h3>
+        <p>We learn your business goals, pain points, and technical requirements in depth before writing a single line of code.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Strategize</h3>
+        <p>We architect the solution — mapping data flows, AI model selection, system design, and tech stack choices.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Build</h3>
+        <p>We develop, test, and iterate rapidly with continuous feedback loops so you see progress every step of the way.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Launch</h3>
+        <p>We deploy, monitor, and support — ensuring everything runs smoothly from day one and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ── -->
   <section id="services" class="section">
+    <div class="section-label">What We Do</div>
     <h2>Services</h2>
     <p class="small">Business-oriented offerings to help launch products and automate workflows.</p>
     <div class="grid cols-3" style="margin-top:12px;">
       <div class="service">
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="6" cy="6" r="1.6" fill="currentColor"/>
+            <circle cx="18" cy="6" r="1.6" fill="currentColor"/>
+            <circle cx="12" cy="18" r="1.6" fill="currentColor"/>
+            <path d="M6.6 6.6 L11.4 17.4 M17.4 6.6 L12.6 17.4 M6 6h12" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
         <div class="svc-body">
           <h3>AI Applications</h3>
           <p class="small">Automated, workflow‑driven apps that eliminate manual steps and accelerate everyday operations.</p>
@@ -210,14 +309,26 @@
         <div><a class="btn" href="#contact">Request Service</a></div>
       </div>
       <div class="service">
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          </svg>
+        </div>
         <div class="svc-body">
           <h3>Chatbots & Conversational AI</h3>
           <p class="small">AI‑powered support and lead‑capture bots seamlessly integrated with your systems and knowledge base.</p>
         </div>
         <div><a class="btn" href="#contact">Request Service</a></div>
       </div>
-
       <div class="service">
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2 8h20" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="5.5" cy="6" r="0.8" fill="currentColor"/>
+            <circle cx="8.5" cy="6" r="0.8" fill="currentColor"/>
+          </svg>
+        </div>
         <div class="svc-body">
           <h3>Landing Pages & Small Business Websites</h3>
           <p class="small">Custom HTML & CSS websites focused on conversions and fully tailored to your brand.</p>
@@ -225,6 +336,13 @@
         <div><a class="btn" href="#contact">Request Service</a></div>
       </div>
       <div class="service">
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="10" width="3" height="8" fill="currentColor" opacity="0.9"/>
+            <rect x="10.5" y="6" width="3" height="12" fill="currentColor" opacity="0.7"/>
+            <rect x="17" y="2" width="3" height="16" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
         <div class="svc-body">
           <h3>Full Stack Data Applications</h3>
           <p class="small">End-to-end data pipelines, predictive models, and interactive analytics apps built to surface insights and drive decisions.</p>
@@ -234,19 +352,33 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ── About ── -->
   <section id="about" class="section">
+    <div class="section-label">Who We Are</div>
     <h2>Mission Statement</h2>
     <div class="about" style="margin-top:12px">
       <div class="bio">
         <p class="small">Optima Computer Systems was founded on the passion of employing modern technology to empower business owners and everyday individuals who aspire to incorporate modern technology into their daily workflows. Our mission is to engineer intelligent, future‑driven technology that solves real‑world pain points while simultaneously pushing past conventional limits in AI, machine learning, and modern web development to create systems that inspire innovation, elevate human potential, and redefine what's possible.</p>
       </div>
-      <img class="avatar" src="images/avatar.png" alt="Your photo">
+      <img class="avatar" src="https://raw.githubusercontent.com/0noahharris4/business-website-/main/images/avatar.png" alt="Your photo">
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- ── CTA Banner ── -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Ready to Build Something Exceptional?</h2>
+      <p>Tell us about your project and let's make it happen.</p>
+      <div class="cta-row" style="justify-content:center;margin-top:28px;">
+        <a class="btn btn-white" href="#contact">Request a Project</a>
+        <a class="btn btn-outline-white" href="mailto:optima@ocscomputing.com">Email Us Directly</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
   <section id="contact" class="section">
+    <div class="section-label">Get in Touch</div>
     <h2>Contact / Request Form</h2>
     <p class="small">Tell us about your desired project and we'll follow up with availability and next steps.</p>
     <form id="contactForm" class="form" style="margin-top:12px" action="https://formspree.io/f/xreebokg" method="POST">
@@ -255,28 +387,24 @@
         <label for="name">Name</label>
         <input id="name" name="name" class="input" required>
       </div>
-
       <div style="margin-bottom:12px">
         <label for="email">Email</label>
         <input id="email" type="email" name="email" class="input" required>
       </div>
-
       <div style="margin-bottom:12px">
         <label for="projectType">Project Type</label>
         <select id="projectType" name="projectType" required>
           <option value="">Select...</option>
-            <option>AI Application</option>
-            <option>Chatbot</option>
-            <option>Website</option>
-            <option>Data Application</option>
+          <option>AI Application</option>
+          <option>Chatbot</option>
+          <option>Website</option>
+          <option>Data Application</option>
         </select>
       </div>
-
       <div style="margin-bottom:12px">
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="6" class="input" required></textarea>
       </div>
-
       <div style="display:flex;gap:12px;align-items:center">
         <button class="btn" type="submit">Send Request</button>
         <span class="small">Or email directly: <a href="mailto:optima@ocscomputing.com">optima@ocscomputing.com</a></span>
@@ -285,9 +413,46 @@
     </form>
   </section>
 
-  <footer>
-    <p class="small">Built for practical AI, data, and modern web solutions.</p>
-  </footer>
- </div>
+</div><!-- /container -->
+
+<!-- ── Footer ── -->
+<footer class="footer-full">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-wordmark">Optima Computer Systems</span>
+      <p>Intelligent software for<br>forward-thinking businesses.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li>AI Applications</li>
+        <li>Chatbots &amp; Conversational AI</li>
+        <li>Landing Pages &amp; Websites</li>
+        <li>Full Stack Data Applications</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:optima@ocscomputing.com">optima@ocscomputing.com</a></li>
+        <li><a href="#contact">Project Request Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Optima Computer Systems &nbsp;·&nbsp; Built for practical AI, data, and modern web solutions.</p>
+  </div>
+</footer>
+
 </body>
 </html>
