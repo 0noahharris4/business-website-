@@ -193,10 +193,6 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
 }
-/* Skip the video on small screens to save data/battery — gradient + tint still show */
-@media (max-width: 720px) {
-  .hero-video { display: none; }
-}
 /* ── Tagline (between hero video and stats strip) ── */
 .hero-tagline {
   text-align: center;
