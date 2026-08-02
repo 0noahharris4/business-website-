@@ -114,6 +114,9 @@ body::after {
 .nav-wordmark .accent {
   color: var(--accent);
 }
+.nav-wordmark-short {
+  display: none;
+}
 .nav-links {
   list-style: none;
   display: flex;
@@ -732,6 +735,7 @@ textarea:focus {
 }
 @media (max-width: 900px) {
   .nav-wordmark-full { display: none; }
+  .nav-wordmark-short { display: inline; }
 }
 @media (max-width: 480px) {
   .nav-inner { gap: 12px; padding: 0 16px; }
