@@ -315,7 +315,11 @@
   // Your clients. Codes are stored scrambled (hashed), so they can't be read from this file.
   // Make new entries with make-client-code.html, then paste the line it gives you here.
   var CLIENTS = [
-          { name: "Natural World", site: false, app: true, locations: ["Matt's Natural World – Florence, KY", "Susan's Natural World – Cincinnati, OH"], hash: "6f68848fe4135cd1586f835e074d34bc375a044fa4e23e59d68c7dc184a37704" }];
+              var CLIENTS = [
+    { name: "Natural World", site: false, app: true, locations: ["Matt's Natural World – Florence, KY", "Susan's Natural World – Cincinnati, OH"], hash: "6f68848fe4135cd1586f835e074d34bc375a044fa4e23e59d68c7dc184a37704" },
+    { name: "Lighthouse Center for Therapy & Play", site: true, app: false, hash: "bb83ced9d66391617a80128693d8385e6380d4aa1af1f120adde2207c74a7301" },
+    { name: "Faded Laces Barbershop", site: true, app: true, hash: "b6e8b4189c0e15176d66afc09b0a3c9d3463e3eee04f6a45decade6b99de9fa7" },
+  ];
 
   var PREVIEW = !LIVE;
   var $ = function (id) { return document.getElementById(id); };
