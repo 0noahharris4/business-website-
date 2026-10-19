@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Client Portal | Optima Computer Systems</title>
+<meta name="description" content="Optima clients: send new products, services and text changes for your website or app.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Optima Portal">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Client Portal: builds on styles.css */
+  .portal-hero {
+    position: relative; overflow: hidden; border-radius: 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #13254d 60%, #0b3a8f 100%);
+    color: #fff; padding: 56px 40px 52px;
+  }
+  .portal-hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px 300px at 85% 0%, rgba(11,110,253,.45), transparent 70%);
+  }
+  .portal-hero > * { position: relative; }
+  .portal-hero .section-label { background: rgba(255,255,255,.1); color: #93c5fd; }
+  .portal-hero h1 { font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -.6px; line-height: 1.1; margin: 6px 0 14px; max-width: 640px; }
+  .portal-hero p { color: rgba(255,255,255,.72); font-size: 1.05rem; max-width: 560px; margin: 0; }
+  .hero-steps { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .hero-step { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 7px 16px 7px 7px; font-size: .86rem; font-weight: 500; color: rgba(255,255,255,.88); }
+  .hero-step b { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-size: .78rem; }
+
+  .portal-wrap { max-width: 760px; margin: -28px auto 0; position: relative; z-index: 2; padding: 0 4px; }
+  .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 40px rgba(15,23,42,.08); padding: 32px; }
+  .panel + .panel { margin-top: 20px; }
+  .panel h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.2px; margin: 0 0 4px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: .875rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+  .field .opt { font-weight: 400; color: var(--muted); }
+  .hint { font-size: .8rem; color: var(--muted); margin-top: 5px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .row-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+
+  .signin-row { display: flex; gap: 10px; }
+  .signin-row .input { text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .signin-row .btn { white-space: nowrap; }
+  .who { display: flex; align-items: center; gap: 14px; }
+  .who-badge { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-light); color: var(--accent); display: grid; place-items: center; font-weight: 800; flex-shrink: 0; }
+  .who-name { font-weight: 700; font-size: 1.05rem; line-height: 1.25; }
+  .who-sub { font-size: .85rem; color: var(--muted); }
+  .linkbtn { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; margin-left: auto; white-space: nowrap; }
+  .linkbtn:hover { text-decoration: underline; }
+
+  .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0 24px; }
+  .choice input { position: absolute; opacity: 0; pointer-events: none; }
+  .choice label { display: flex; gap: 14px; align-items: flex-start; border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color .15s, box-shadow .15s, background .15s; }
+  .choice label:hover { border-color: rgba(11,110,253,.4); }
+  .choice input:checked + label { border-color: var(--accent); background: #f7faff; box-shadow: 0 0 0 3px rgba(11,110,253,.12); }
+  .choice input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .choice .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: grid; place-items: center; flex-shrink: 0; }
+  .choice input:checked + label .ic { background: var(--accent); color: #fff; }
+  .choice strong { display: block; font-size: .95rem; }
+  .choice span.d { display: block; font-size: .82rem; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+
+  .seg { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+  .seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg label { margin: 0 !important; padding: 7px 16px; border-radius: 8px; font-size: .86rem !important; font-weight: 600 !important; color: var(--muted) !important; cursor: pointer; }
+  .seg input:checked + label { background: #fff; color: var(--accent) !important; box-shadow: 0 1px 4px rgba(15,23,42,.1); }
+  .seg input:focus-visible + label { outline: 2px solid var(--accent); }
+  .seg input:disabled + label { opacity: .4; cursor: not-allowed; }
+
+  .drop { position: relative; border: 1.5px dashed #c7d2e2; border-radius: 14px; background: #fafcff; padding: 26px 18px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+  .drop:hover, .drop.over { border-color: var(--accent); background: #f3f8ff; }
+  .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .drop .ic { width: 44px; height: 44px; margin: 0 auto 8px; border-radius: 12px; background: var(--accent-light); color: var(--accent); display: grid; place-items: center; }
+  .drop strong { display: block; font-size: .92rem; }
+  .drop span { font-size: .8rem; color: var(--muted); }
+  .preview { display: none; align-items: center; gap: 14px; border: 1px solid var(--border); border-radius: 14px; padding: 10px; }
+  .preview.show { display: flex; }
+  .preview img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; background: var(--bg); }
+  .preview .meta { flex: 1; min-width: 0; font-size: .85rem; }
+  .preview .meta b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .preview .meta span { color: var(--muted); }
+
+  .divider { height: 1px; background: var(--border); margin: 8px 0 20px; }
+  .submit-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+  .btn[disabled] { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+  .msg { font-size: .88rem; margin-top: 10px; min-height: 1.2em; }
+  .msg.err { color: #c62828; }
+
+  .done { text-align: center; padding: 44px 32px; }
+  .done .check { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: #e7f6ec; color: #1f8a46; display: grid; place-items: center; }
+  .done h2 { font-size: 1.5rem; }
+  .ref { display: inline-block; margin: 14px 0 22px; font-family: ui-monospace, "SF Mono", Consolas, monospace; font-weight: 700; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; letter-spacing: .05em; }
+
+  .faq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 28px auto 0; }
+  .faq div { padding: 4px 2px; }
+  .faq h3 { font-size: .9rem; font-weight: 700; margin: 0 0 4px; }
+  .faq p { font-size: .84rem; color: var(--muted); margin: 0; line-height: 1.55; }
+  .tip { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); font-size: .84rem; color: var(--muted); }
+  .tip svg { flex-shrink: 0; color: var(--accent); }
+  .loading { display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 600; color: var(--muted); }
+  .spinner { width: 20px; height: 20px; border-radius: 50%; border: 2.5px solid var(--accent-light); border-top-color: var(--accent); animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  [hidden] { display: none !important; }
+
+  @media (max-width: 720px) {
+    .portal-hero { padding: 40px 22px 48px; border-radius: 16px; }
+    .panel { padding: 22px 18px; }
+    .choice, .row2, .row-2-1, .faq { grid-template-columns: 1fr; }
+    .signin-row { flex-direction: column; }
+    .tip { flex-wrap: wrap; }
+    .tip span { flex: 1 1 200px; }
+  }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-wordmark"><span class="accent">Optima</span><span class="nav-wordmark-full"> Computer Systems</span><span class="nav-wordmark-short"> CS</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Request a Project</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <header class="portal-hero">
+    <div class="section-label">Client Portal</div>
+    <h1>Update your website or app.</h1>
+    <p>Add a new product or service, or change any wording. Send it here and we'll handle the rest.</p>
+    <div class="hero-steps" aria-label="How it works">
+      <div class="hero-step"><b>1</b>Sign in with your code</div>
+      <div class="hero-step"><b>2</b>Send your update</div>
+      <div class="hero-step"><b>3</b>We make it live</div>
+    </div>
+  </header>
+
+  <main class="portal-wrap">
+    <!-- Sign in -->
+    <section class="panel" id="signinPanel" aria-labelledby="signinTitle">
+      <h2 id="signinTitle">Sign in</h2>
+      <p class="small" style="margin:0 0 16px">Use the client code we gave you. Don't have one? Email <a href="mailto:optima@ocscomputing.com">optima@ocscomputing.com</a>.</p>
+      <form id="signinForm" novalidate>
+        <label for="code" class="sr" style="position:absolute;left:-9999px">Client code</label>
+        <div class="signin-row">
+          <input id="code" class="input" placeholder="e.g. ACME-1234" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+          <button class="btn" type="submit" id="signinBtn">Continue</button>
+        </div>
+        <div class="msg err" id="signinMsg" role="alert"></div>
+      </form>
+    </section>
+
+    <!-- Auto sign-in from a personal link -->
+    <section class="panel loading" id="loadingPanel" hidden aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span> Signing you in…
+    </section>
+
+    <!-- Signed in -->
+    <section class="panel" id="whoPanel" hidden>
+      <div class="who">
+        <div class="who-badge" id="whoBadge">N</div>
+        <div>
+          <div class="who-name" id="whoName">Client</div>
+          <div class="who-sub">Signed in</div>
+        </div>
+        <button class="linkbtn" type="button" id="signoutBtn">Switch client</button>
+      </div>
+      <div class="tip" id="homeTip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>
+        <span id="homeTipText">Tip: save this page to your home screen to send updates in one tap.</span>
+        <button class="linkbtn" type="button" id="copyLink">Copy my link</button>
+      </div>
+    </section>
+
+    <!-- Request form -->
+    <section class="panel" id="requestPanel" hidden aria-labelledby="reqTitle">
+      <h2 id="reqTitle">What would you like to update?</h2>
+      <form id="requestForm" novalidate>
+        <div class="choice" role="radiogroup" aria-label="Request type">
+          <input type="radio" name="kind" id="kindProduct" value="product" checked>
+          <label for="kindProduct">
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span><strong>Add a product or service</strong><span class="d">Upload a photo and describe it. We'll add it for you.</span></span>
+          </label>
+          <input type="radio" name="kind" id="kindText" value="text">
+          <label for="kindText">
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+            <span><strong>Change some text</strong><span class="d">Hours, prices, descriptions, anything. Type what it should say.</span></span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label id="targetLbl">Where should this change go?</label>
+          <div class="seg" role="radiogroup" aria-labelledby="targetLbl">
+            <input type="radio" name="target" id="tWeb" value="website"><label for="tWeb">Website</label>
+            <input type="radio" name="target" id="tApp" value="app"><label for="tApp">App</label>
+            <input type="radio" name="target" id="tBoth" value="both" checked><label for="tBoth">Both</label>
+          </div>
+        </div>
+        <div class="field" id="locField" hidden>
+          <label id="locLbl">Store location</label>
+          <div class="seg" role="radiogroup" aria-labelledby="locLbl" id="locOptions"></div>
+        </div>
+        <div class="divider"></div>
+
+        <!-- Product / service -->
+        <div id="productFields">
+          <div class="field" id="photoField">
+            <label id="photoLbl">Photo <span class="opt">(recommended)</span></label>
+            <div class="drop" id="drop">
+              <input type="file" id="photo" accept="image/*" aria-label="Upload a photo">
+              <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></div>
+              <strong>Tap to add a photo</strong>
+              <span>or drag one here. JPG or PNG, any size.</span>
+            </div>
+            <div class="preview" id="preview">
+              <img id="previewImg" alt="Selected photo">
+              <div class="meta"><b id="previewName">photo.jpg</b><span id="previewSize"></span></div>
+              <button class="linkbtn" type="button" id="removePhoto">Remove</button>
+            </div>
+          </div>
+          <div class="row-2-1" id="nameRow">
+            <div class="field">
+              <label for="title">Product or service name</label>
+              <input id="title" class="input" maxlength="120" placeholder="e.g. Hot towel shave">
+            </div>
+            <div class="field">
+              <label for="price">Price <span class="opt">(optional)</span></label>
+              <input id="price" class="input" maxlength="40" placeholder="e.g. $30">
+            </div>
+          </div>
+          <div class="field" id="descField">
+            <label for="description">Description</label>
+            <textarea id="description" class="input" rows="4" maxlength="5000" placeholder="What it is, what's included, anything customers should know."></textarea>
+          </div>
+        </div>
+
+        <!-- Text change -->
+        <div id="textFields" hidden>
+          <div class="field">
+            <label for="location">Where is the text?</label>
+            <input id="location" class="input" maxlength="200" placeholder="e.g. Home page, the hours section">
+            <div class="hint">The page, screen or section is plenty. A screenshot below helps too.</div>
+          </div>
+          <div class="field">
+            <label for="currentText">What it says now <span class="opt">(optional)</span></label>
+            <textarea id="currentText" class="input" rows="2" maxlength="3000" placeholder="Paste or describe the current wording"></textarea>
+          </div>
+          <div class="field">
+            <label for="newText">What it should say</label>
+            <textarea id="newText" class="input" rows="4" maxlength="5000" placeholder="Type the new wording exactly as you'd like it"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else? <span class="opt">(optional)</span></label>
+          <textarea id="notes" class="input" rows="2" maxlength="2000" placeholder="Timing, where it should appear, questions for us"></textarea>
+        </div>
+        <div class="field">
+          <label for="contact">Your email</label>
+          <input id="contact" type="email" class="input" maxlength="200" placeholder="So we can confirm when it's live" autocomplete="email">
+        </div>
+
+        <div class="submit-row">
+          <button class="btn" type="submit" id="sendBtn">Send update</button>
+          <span class="small" style="font-size:.84rem">We'll confirm by email, usually within 24 hours.</span>
+        </div>
+        <div class="msg err" id="sendMsg" role="alert"></div>
+      </form>
+    </section>
+
+    <!-- Success -->
+    <section class="panel done" id="donePanel" hidden aria-live="polite">
+      <div class="check"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Update received</h2>
+      <p class="small" style="margin:0 auto;max-width:420px" id="doneText">We'll get it done and email you when it's live.</p>
+      <div class="ref" id="doneRef">REQ-0000</div>
+      <div><button class="btn secondary" type="button" id="againBtn">Send another update</button></div>
+    </section>
+
+    <div class="faq">
+      <div><h3>How fast?</h3><p>Most updates go live within 1 to 2 business days. We'll email you when it's done.</p></div>
+      <div><h3>What can I send?</h3><p>New products, services, specials, photos, prices, hours and any wording on your site or app.</p></div>
+      <div><h3>Bigger changes?</h3><p>New pages or features? <a href="index.html#contact">Request a project</a> and we'll scope it with you.</p></div>
+    </div>
+  </main>
+</div>
+
+<footer class="footer-full" style="margin-top:70px">
+  <div class="footer-bottom">
+    <p>&copy; 2026 Optima Computer Systems &nbsp;·&nbsp; <a href="index.html" style="color:inherit">ocscomputing.com</a> &nbsp;·&nbsp; <a href="mailto:optima@ocscomputing.com" style="color:inherit">optima@ocscomputing.com</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ===== Settings ===== */
+  // LIVE = false: preview mode. Sign-in works, but nothing is uploaded or emailed.
+  var LIVE = true;
+
+  // Your existing Formspree form: every request is emailed to your business inbox through it.
+  var FORMSPREE_URL = "https://formspree.io/f/xreebokg";
+
+  // Free Cloudinary account for photos (see CLIENT-PORTAL-SETUP.md).
+  var CLOUDINARY_CLOUD = "dsu4e88y";   // your Cloud name, e.g. "dxyz123ab"
+  var CLOUDINARY_PRESET = "client_portal";  // your unsigned upload preset, e.g. "client_portal"
+
+  // Your clients. Codes are stored scrambled (hashed), so they can't be read from this file.
+  // Make new entries with make-client-code.html, then paste the line it gives you here.
+  var CLIENTS = [
+    { name: "Natural World", site: false, app: true, locations: ["Florence", "Location 2"], hash: "6f68848fe4135cd1586f835e074d34bc375a044fa4e23e59d68c7dc184a37704" }
+  ];
+
+  var PREVIEW = !LIVE;
+  var $ = function (id) { return document.getElementById(id); };
+  var session = null; // { code, name, has_site, has_app }
+  var photoData = null; // base64 (no prefix)
+
+  function store(k, v) { try { v == null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v); } catch (e) {} }
+  function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+  function keep(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  /* ===== Code check: SHA-256 of "optima-portal|CODE" ===== */
+  function sha256Fallback(str) {
+    var K = [], H = [], i, j, isP = function (n) { for (var f = 2; f * f <= n; f++) if (n % f === 0) return false; return true; };
+    for (i = 2, j = 0; j < 64; i++) if (isP(i)) { if (j < 8) H[j] = (Math.pow(i, 1 / 2) * 4294967296) | 0; K[j++] = (Math.pow(i, 1 / 3) * 4294967296) | 0; }
+    var bytes = unescape(encodeURIComponent(str)), l = bytes.length * 8, w = [];
+    bytes += "\x80"; while (bytes.length % 64 - 56) bytes += "\x00";
+    for (i = 0; i < bytes.length; i++) w[i >> 2] |= bytes.charCodeAt(i) << ((3 - i) % 4) * 8;
+    w[w.length] = (l / 4294967296) | 0; w[w.length] = l;
+    var r = function (v, n) { return (v >>> n) | (v << (32 - n)); };
+    for (j = 0; j < w.length; j += 16) {
+      var W = w.slice(j, j + 16), h = H.slice(0, 8);
+      for (i = 0; i < 64; i++) {
+        if (i >= 16) { var a = W[i - 15], b = W[i - 2]; W[i] = (W[i - 16] + (r(a, 7) ^ r(a, 18) ^ (a >>> 3)) + W[i - 7] + (r(b, 17) ^ r(b, 19) ^ (b >>> 10))) | 0; }
+        var e = h[4], t1 = h[7] + (r(e, 6) ^ r(e, 11) ^ r(e, 25)) + ((e & h[5]) ^ (~e & h[6])) + K[i] + W[i];
+        var x = h[0], t2 = (r(x, 2) ^ r(x, 13) ^ r(x, 22)) + ((x & h[1]) ^ (x & h[2]) ^ (h[1] & h[2]));
+        h = [(t1 + t2) | 0].concat(h); h[4] = (h[4] + t1) | 0; h.length = 8;
+      }
+      for (i = 0; i < 8; i++) H[i] = (H[i] + h[i]) | 0;
+    }
+    var out = ""; for (i = 0; i < 8; i++) out += ("00000000" + (H[i] >>> 0).toString(16)).slice(-8);
+    return out;
+  }
+  function hashCode(code) {
+    var s = "optima-portal|" + code;
+    if (window.crypto && crypto.subtle && window.TextEncoder) {
+      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)).then(function (buf) {
+        return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      }, function () { return sha256Fallback(s); });
+    }
+    return Promise.resolve(sha256Fallback(s));
+  }
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function makeRef() {
+    var d = new Date(), abc = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", tail = "";
+    for (var i = 0; i < 3; i++) tail += abc[Math.floor(Math.random() * abc.length)];
+    return "REQ-" + ("0" + (d.getMonth() + 1)).slice(-2) + ("0" + d.getDate()).slice(-2) + "-" + tail;
+  }
+
+  function uploadPhoto() {
+    if (!photoData || PREVIEW) return Promise.resolve(null);
+    if (!CLOUDINARY_CLOUD || !CLOUDINARY_PRESET) return Promise.resolve(null);
+    var fd = new FormData();
+    fd.append("file", "data:image/jpeg;base64," + photoData);
+    fd.append("upload_preset", CLOUDINARY_PRESET);
+    fd.append("folder", "client_portal/" + session.code.split("-")[0].toLowerCase());
+    return fetch("https://api.cloudinary.com/v1_1/" + CLOUDINARY_CLOUD + "/image/upload", { method: "POST", body: fd })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.secure_url) throw 0; return j.secure_url; }); })
+      .catch(function () { throw new Error("The photo couldn't be uploaded. Check your connection, or remove the photo and try again."); });
+  }
+
+  function callFn(body) {
+    if (body.action === "verify") {
+      if (!body.code) return Promise.reject(new Error("Enter your client code."));
+      return hashCode(body.code).then(function (h) {
+        var c = CLIENTS.filter(function (x) { return x.hash === h; })[0];
+        if (c) return { name: c.name, has_site: c.site !== false, has_app: !!c.app, locations: c.locations || [] };
+        return wait(700).then(function () { throw new Error("That client code wasn't recognized. Check it and try again."); });
+      });
+    }
+    // Submit: upload the photo (if any), then emailYou() sends the request to your inbox.
+    return (PREVIEW ? wait(600) : Promise.resolve()).then(uploadPhoto).then(function (url) {
+      return { ref: makeRef(), image_url: url };
+    });
+  }
+
+  /* ===== Sign in ===== */
+  function showSignedIn() {
+    $("signinPanel").hidden = true;
+    $("whoPanel").hidden = false;
+    $("requestPanel").hidden = false;
+    $("donePanel").hidden = true;
+    $("whoName").textContent = session.name;
+    $("whoBadge").textContent = session.name.trim().charAt(0).toUpperCase();
+    // Only offer website/app if the client has them.
+    var onlyOne = session.has_site !== session.has_app;
+    $("tWeb").disabled = !session.has_site;
+    $("tApp").disabled = !session.has_app;
+    $("tBoth").disabled = onlyOne;
+    if (onlyOne) (session.has_site ? $("tWeb") : $("tApp")).checked = true;
+    // Store location: only for clients with more than one store.
+    var locs = session.locations || [];
+    $("locField").hidden = locs.length < 2;
+    var box = $("locOptions"); box.innerHTML = "";
+    if (locs.length > 1) locs.concat(["All locations"]).forEach(function (name, i) {
+      var id = "loc" + i, inp = document.createElement("input"), lab = document.createElement("label");
+      inp.type = "radio"; inp.name = "location"; inp.id = id; inp.value = name;
+      lab.htmlFor = id; lab.textContent = name;
+      box.appendChild(inp); box.appendChild(lab);
+    });
+    try { if (!/[?&]code=/.test(location.search)) history.replaceState(null, "", personalLink(session.code)); } catch (e) {}
+    var c = recall("ocs_portal_email");
+    if (c && !$("contact").value) $("contact").value = c;
+  }
+  function signOut() {
+    session = null; store("ocs_portal", null);
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    $("signinPanel").hidden = false;
+    $("whoPanel").hidden = $("requestPanel").hidden = $("donePanel").hidden = true;
+    $("code").value = ""; $("code").focus();
+  }
+
+  $("signinForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var code = $("code").value.trim().toUpperCase();
+    $("signinMsg").textContent = "";
+    if (!code) { $("signinMsg").textContent = "Enter your client code."; return; }
+    var btn = $("signinBtn");
+    btn.disabled = true; btn.textContent = "Checking…";
+    callFn({ action: "verify", code: code }).then(function (res) {
+      session = { code: code, name: res.name, has_site: res.has_site !== false, has_app: !!res.has_app, locations: res.locations || [] };
+      store("ocs_portal", JSON.stringify(session));
+      showSignedIn();
+    }).catch(function (err) {
+      $("signinMsg").textContent = err.message;
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = "Continue";
+    });
+  });
+  $("signoutBtn").addEventListener("click", signOut);
+
+  /* ===== Request type ===== */
+  function syncKind() {
+    var isText = $("kindText").checked;
+    $("textFields").hidden = !isText;
+    $("nameRow").hidden = $("descField").hidden = isText;
+    // One photo box for both: a product photo, or a screenshot of the text to change.
+    var pf = $("photoField");
+    if (isText) $("textFields").appendChild(pf); else $("productFields").insertBefore(pf, $("productFields").firstChild);
+    $("photoLbl").innerHTML = isText ? 'Screenshot <span class="opt">(optional)</span>' : 'Photo <span class="opt">(recommended)</span>';
+    $("drop").querySelector("strong").textContent = isText ? "Tap to add a screenshot" : "Tap to add a photo";
+    $("sendMsg").textContent = "";
+  }
+  $("kindProduct").addEventListener("change", syncKind);
+  $("kindText").addEventListener("change", syncKind);
+
+  /* ===== Photo: resize in the browser so uploads stay quick ===== */
+  function resetPhoto() {
+    photoData = null; $("photo").value = "";
+    $("preview").classList.remove("show"); $("drop").hidden = false;
+  }
+  function loadPhoto(file) {
+    if (!file) return;
+    if (!/^image\//.test(file.type)) { $("sendMsg").textContent = "That file isn't a photo. Choose a JPG or PNG."; return; }
+    $("sendMsg").textContent = "";
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      var max = 1800, w = img.naturalWidth, h = img.naturalHeight;
+      var s = Math.min(1, max / Math.max(w, h));
+      var c = document.createElement("canvas");
+      c.width = Math.round(w * s); c.height = Math.round(h * s);
+      var ctx = c.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0, c.width, c.height);
+      var dataUrl = c.toDataURL("image/jpeg", 0.86);
+      photoData = dataUrl.split(",")[1];
+      $("previewImg").src = dataUrl;
+      $("previewName").textContent = file.name;
+      $("previewSize").textContent = c.width + " × " + c.height + " · " + Math.round(photoData.length * 0.75 / 1024) + " KB";
+      $("preview").classList.add("show"); $("drop").hidden = true;
+      URL.revokeObjectURL(url);
+    };
+    img.onerror = function () {
+      URL.revokeObjectURL(url);
+      $("sendMsg").textContent = "That photo couldn't be opened. Try a JPG or PNG (iPhone HEIC photos may need converting).";
+    };
+    img.src = url;
+  }
+  $("photo").addEventListener("change", function () { loadPhoto(this.files[0]); });
+  $("removePhoto").addEventListener("click", resetPhoto);
+  ["dragenter", "dragover"].forEach(function (t) { $("drop").addEventListener(t, function (e) { e.preventDefault(); $("drop").classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (t) { $("drop").addEventListener(t, function () { $("drop").classList.remove("over"); }); });
+  $("drop").addEventListener("drop", function (e) { e.preventDefault(); loadPhoto(e.dataTransfer.files[0]); });
+
+  /* ===== Submit ===== */
+  function val(id) { return $(id).value.trim(); }
+  function targetVal() { var t = document.querySelector('input[name="target"]:checked'); return t ? t.value : ""; }
+
+  function emailYou(payload, res) {
+    // Sends the request to your business email through Formspree.
+    if (PREVIEW) return Promise.resolve();
+    var isProduct = payload.kind === "product";
+    var where = { website: "Website", app: "App", both: "Website and app" }[payload.target];
+    var fd = new FormData();
+    fd.append("_subject", "Client update " + res.ref + ": " + session.name + (payload.store_location ? " – " + payload.store_location : "") + " (" + (isProduct ? "new product/service" : "text change") + ")");
+    fd.append("Client", session.name);
+    fd.append("Reference", res.ref);
+    fd.append("Request", isProduct ? "Add a product or service" : "Change text");
+    fd.append("Where", where);
+    if (payload.store_location) fd.append("Store location", payload.store_location);
+    if (isProduct) {
+      fd.append("Name", payload.title);
+      if (payload.price) fd.append("Price", payload.price);
+      fd.append("Description", payload.new_text);
+    } else {
+      fd.append("Location", payload.location);
+      if (payload.current_text) fd.append("Current text", payload.current_text);
+      fd.append("New text", payload.new_text);
+    }
+    if (payload.notes) fd.append("Notes", payload.notes);
+    fd.append("Photo", res.image_url || (photoData ? "Photo was added but couldn't be uploaded (photo hosting isn't set up)" : "None attached"));
+    if (payload.contact) { fd.append("email", payload.contact); fd.append("_replyto", payload.contact); }
+    return fetch(FORMSPREE_URL, { method: "POST", body: fd, headers: { Accept: "application/json" } }).then(function (r) {
+      if (!r.ok) throw 0;
+    }).catch(function () {
+      throw new Error("Your update couldn't be sent. Please try again, or email optima@ocscomputing.com.");
+    });
+  }
+
+  $("requestForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = $("sendMsg"); msg.textContent = "";
+    var kind = $("kindText").checked ? "text" : "product";
+    var payload = {
+      action: "submit", code: session.code, kind: kind, target: targetVal(),
+      notes: val("notes"), contact: val("contact")
+    };
+    if (kind === "product") {
+      payload.title = val("title"); payload.price = val("price"); payload.new_text = val("description");
+      if (!payload.title) { msg.textContent = "Add the product or service name."; $("title").focus(); return; }
+      if (!payload.new_text) { msg.textContent = "Add a short description."; $("description").focus(); return; }
+    } else {
+      payload.location = val("location"); payload.current_text = val("currentText"); payload.new_text = val("newText");
+      if (!payload.location) { msg.textContent = "Say where the text is."; $("location").focus(); return; }
+      if (!payload.new_text) { msg.textContent = "Type what the text should say."; $("newText").focus(); return; }
+    }
+    if ((session.locations || []).length > 1) {
+      var lc = document.querySelector('input[name="location"]:checked');
+      if (!lc) { msg.textContent = "Choose which store location this is for."; $("locField").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+      payload.store_location = lc.value;
+    }
+    if (!payload.contact || !/^\S+@\S+\.\S+$/.test(payload.contact)) { msg.textContent = "Add your email so we can confirm when it's live."; $("contact").focus(); return; }
+    if (photoData) payload.image = photoData;
+    keep("ocs_portal_email", payload.contact);
+
+    var btn = $("sendBtn");
+    btn.disabled = true; btn.textContent = photoData ? "Uploading…" : "Sending…";
+    callFn(payload).then(function (res) {
+      return emailYou(payload, res).then(function () { return res; });
+    }).then(function (res) {
+      $("requestPanel").hidden = true;
+      $("donePanel").hidden = false;
+      $("doneRef").textContent = res.ref;
+      $("doneText").textContent = "Thanks, " + session.name + ". We'll make the change and email " + payload.contact + " when it's live.";
+      $("requestForm").reset(); resetPhoto();
+      $("kindProduct").checked = true; syncKind();
+      $("contact").value = payload.contact;
+      $("donePanel").scrollIntoView({ behavior: "smooth", block: "center" });
+    }).catch(function (err) {
+      msg.textContent = err.message;
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = "Send update";
+    });
+  });
+
+  $("againBtn").addEventListener("click", function () {
+    showSignedIn();
+    $("requestPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  /* ===== Personal link: client-portal.html?code=NELLS-4821 signs the client in automatically ===== */
+  function personalLink(code) {
+    return location.origin + location.pathname + "?code=" + encodeURIComponent(code);
+  }
+  $("copyLink").addEventListener("click", function () {
+    var link = personalLink(session.code), btn = this;
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy my link"; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, function () { prompt("Your link:", link); });
+    else prompt("Your link:", link);
+  });
+
+  var linkCode = "";
+  try { linkCode = (new URLSearchParams(location.search).get("code") || "").trim().toUpperCase(); } catch (e) {}
+  try { session = JSON.parse(read("ocs_portal") || "null"); } catch (e) { session = null; }
+
+  if (linkCode && !(session && session.code === linkCode)) {
+    // Opened from a personal link: sign in with the code in the link.
+    $("signinPanel").hidden = true;
+    $("loadingPanel").hidden = false;
+    callFn({ action: "verify", code: linkCode }).then(function (res) {
+      session = { code: linkCode, name: res.name, has_site: res.has_site !== false, has_app: !!res.has_app, locations: res.locations || [] };
+      store("ocs_portal", JSON.stringify(session));
+      $("loadingPanel").hidden = true;
+      showSignedIn();
+    }).catch(function (err) {
+      session = null;
+      $("loadingPanel").hidden = true;
+      $("signinPanel").hidden = false;
+      $("code").value = linkCode;
+      $("signinMsg").textContent = "This link didn't work. " + err.message;
+    });
+  } else if (session && session.code) {
+    showSignedIn();
+  }
+})();
+</script>
+</body>
+</html>
