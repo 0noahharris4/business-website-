@@ -249,6 +249,41 @@
   .ed-photo { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .ed-photo img { width: 96px; height: 96px; object-fit: cover; border-radius: 12px; background: var(--leaf-tint); }
 
+  /* App ordering */
+  .store-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 20px; }
+  .scard { border: 2px solid var(--leaf); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 4px; }
+  .scard.paused { border-color: var(--danger); background: #fdf6f4; }
+  .scard-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .scard-name { font: 800 20px/1.2 var(--display); letter-spacing: -.01em; }
+  .pill.open { background: var(--leaf-tint); color: var(--leaf-dark); }
+  .pill.paused { background: #fbe0d9; color: #8e3524; }
+  .scard label { margin-top: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { border: 1.5px solid var(--line); background: var(--card); color: var(--ink); font: 600 14.5px var(--body); padding: 9px 14px; border-radius: 999px; cursor: pointer; min-height: 40px; }
+  .chip:hover { border-color: var(--leaf); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip[disabled] { opacity: .5; cursor: default; }
+  .scard textarea { min-height: 104px; }
+  .saved-note { font-size: 14px; font-weight: 600; color: var(--leaf-dark); }
+  .saved-note.err { color: var(--danger); }
+  .scard-foot { font-size: 13px; color: var(--muted); margin-top: 10px; }
+  .setup-box { background: #fff7e0; border: 1px solid #f0dca3; color: #6b5310; border-radius: 14px; padding: 14px 16px; margin-top: 18px; font-size: 15px; }
+  .setup-box code { background: rgba(0,0,0,.06); padding: 1px 6px; border-radius: 6px; font-size: 14px; }
+
+  /* Rewards */
+  .r-note { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: 14.5px; color: var(--ink-soft); margin-top: 18px; }
+  .rw-phone { margin-top: 14px; background: var(--sky); border-radius: 26px; padding: 20px 16px; }
+  .rw-title { font: 800 24px/1.15 var(--display); letter-spacing: -.02em; }
+  .rw-sub { color: var(--ink-soft); font-size: 14.5px; margin: 6px 0 14px; }
+  .rw-card { background: #fff; border-radius: 20px; padding: 16px; box-shadow: 0 8px 22px rgba(18,52,38,.10); }
+  .rw-head { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; }
+  .rw-count { font: 800 20px var(--display); color: var(--leaf); }
+  .rw-stamps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .rw-stamp { width: calc((100% - 32px) / 5); aspect-ratio: 1; border-radius: 50%; border: 2px dashed var(--line); display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 15px; }
+  .rw-stamp.on { background: var(--leaf); border: 2px solid var(--leaf); }
+  .rw-steps { margin: 14px 2px 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-soft); display: grid; gap: 8px; }
+  .rw-steps b { color: var(--ink); display: block; font-size: 14.5px; }
+
   @media (max-width: 760px) {
     .tabs { flex-wrap: nowrap; overflow-x: auto; gap: 6px; margin-inline: -4px; padding: 2px 4px 6px; scrollbar-width: none; }
     .tab { padding: 10px 13px; font-size: 14px; white-space: nowrap; flex: none; }
@@ -279,7 +314,7 @@
     <div class="auth-card">
       <img class="auth-logo" src="data:image/png;base64,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" alt="" width="56" height="56">
       <h1 id="signin-title">Welcome back</h1>
-      <p class="sub">Sign in to manage products and send store alerts to your customers' phones.</p>
+      <p class="sub">Sign in to manage products, app orders, rewards and store alerts.</p>
       <form id="signinForm">
         <label for="pw">Password</label>
         <div class="pw-wrap">
@@ -289,7 +324,7 @@
         <p class="error" id="signinError" role="alert" hidden></p>
         <div class="actions"><button class="btn full" type="submit" id="signinBtn">Sign in</button></div>
       </form>
-      <p class="auth-foot">Owner dashboard: products and store alerts</p>
+      <p class="auth-foot">Owner dashboard: products, ordering, rewards and store alerts</p>
     </div>
   </div>
 </section>
@@ -310,6 +345,8 @@
   <div id="appView" hidden>
     <nav class="tabs" role="tablist" aria-label="Dashboard sections">
       <button class="tab" role="tab" id="tabBtn-products" data-tab="products" aria-selected="true">Products</button>
+      <button class="tab" role="tab" id="tabBtn-ordering" data-tab="ordering" aria-selected="false">App ordering <span class="badge" id="pausedBadge" hidden>Paused</span></button>
+      <button class="tab" role="tab" id="tabBtn-rewards" data-tab="rewards" aria-selected="false">Rewards</button>
       <button class="tab" role="tab" id="tabBtn-alerts" data-tab="alerts" aria-selected="false">Store alerts</button>
     </nav>
 
@@ -394,6 +431,65 @@
         <div class="p-cards" id="pCards"></div>
         <p class="empty" id="productsEmpty" hidden>No products match.</p>
       </section>
+    </div>
+
+    <!-- ===== App ordering ===== -->
+    <div id="tab-ordering" hidden>
+      <section class="panel" aria-labelledby="ordering-title">
+        <h1 id="ordering-title">App ordering</h1>
+        <p class="sub">Pause pickup orders from the app when a store gets busy, and set the wait customers see before they order. Changes reach the app within about 30 seconds.</p>
+        <p class="error" id="orderingError" role="alert" hidden></p>
+        <div class="setup-box" id="orderingSetup" hidden>These settings need a one-time setup: in Supabase, open the SQL Editor and run <code>shop-backend/settings-schema.sql</code>. Then reload this page.</div>
+        <div class="store-cards" id="storeCards"></div>
+      </section>
+    </div>
+
+    <!-- ===== Rewards ===== -->
+    <div id="tab-rewards" hidden>
+      <div class="grid">
+        <section class="panel" aria-labelledby="rewards-title">
+          <h1 id="rewards-title">Rewards card</h1>
+          <p class="sub">Set how the stamp card works. The app and staff mode use these right away.</p>
+          <div class="setup-box" id="rewardsSetup" hidden>These settings need a one-time setup: in Supabase, open the SQL Editor and run <code>shop-backend/settings-schema.sql</code>. Then reload this page.</div>
+          <form id="rewardsForm" novalidate>
+            <label for="rStamps">Stamps to fill a card</label>
+            <select id="rStamps" style="width:100%"></select>
+
+            <label for="rReward">Reward for a full card <span class="hint">(shown as "Fill your card to earn …")</span></label>
+            <input id="rReward" maxlength="40" placeholder="$10 off" required>
+            <span class="count" id="rRewardCount">0 / 40</span>
+
+            <label for="rRule">How customers earn a stamp</label>
+            <input id="rRule" maxlength="160" placeholder="Spend $10 or more in one visit, at either store." required>
+            <span class="count" id="rRuleCount">0 / 160</span>
+
+            <p class="r-note">Customers keep the stamps they already have. If you lower the number of stamps, anyone already at or past the new number earns their reward on their next stamp. One stamp per visit stays the rule.</p>
+            <p class="error" id="rewardsError" role="alert" hidden></p>
+            <div class="actions">
+              <button class="btn" type="submit" id="rSave">Save rewards</button>
+              <span class="saved-note" id="rSaved" role="status"></span>
+            </div>
+          </form>
+        </section>
+
+        <aside class="preview-wrap" aria-label="Rewards preview">
+          <h2>Preview</h2>
+          <div class="rw-phone" aria-hidden="true">
+            <div class="rw-title">Natural World Rewards</div>
+            <div class="rw-sub" id="rwSub"></div>
+            <div class="rw-card">
+              <div class="rw-head"><span>Your rewards card</span><span class="rw-count" id="rwCount"></span></div>
+              <div class="rw-stamps" id="rwStamps"></div>
+            </div>
+            <ul class="rw-steps">
+              <li><b>Shop in store</b><span id="rwRule"></span></li>
+              <li><b>Get a stamp</b>Show this card at checkout and we'll scan it.</li>
+              <li><b>Earn your reward</b><span id="rwEvery"></span></li>
+            </ul>
+          </div>
+          <p class="preview-note">How the Rewards tab looks in the app, with 3 stamps collected.</p>
+        </aside>
+      </div>
     </div>
 
     <!-- ===== Store alerts (compose) ===== -->
@@ -507,6 +603,11 @@
   let password = "";
   let subscribers = 0;
   let demoHistory = [];
+  const demoStores = [
+    { store: "florence", orders_open: true, wait_minutes: 20, pause_message: "", updated_at: null },
+    { store: "cincinnati", orders_open: true, wait_minutes: 20, pause_message: "", updated_at: null },
+  ];
+  const demoRewards = { stamps_for_reward: 10, reward_text: "$10 off", earn_rule: "Spend $10 or more in one visit, at either store.", updated_at: null };
 
   function store(key, val) { try { val == null ? sessionStorage.removeItem(key) : sessionStorage.setItem(key, val); } catch {} }
   function load(key) { try { return sessionStorage.getItem(key); } catch { return null; } }
@@ -515,6 +616,17 @@
     if (DEMO) {
       await new Promise((r) => setTimeout(r, 500));
       if (payload.action === "stats") return { subscribers: 0 };
+      if (payload.action === "settings") return { stores: demoStores, rewards: demoRewards };
+      if (payload.action === "store_settings_save") {
+        const s = demoStores.find((x) => x.store === payload.store);
+        for (const k of ["orders_open", "wait_minutes", "pause_message"]) if (payload[k] !== undefined) s[k] = payload[k];
+        s.updated_at = new Date().toISOString();
+        return { store: { ...s } };
+      }
+      if (payload.action === "reward_settings_save") {
+        Object.assign(demoRewards, { stamps_for_reward: payload.stamps_for_reward, reward_text: payload.reward_text, earn_rule: payload.earn_rule, updated_at: new Date().toISOString() });
+        return { rewards: { ...demoRewards } };
+      }
       if (payload.action === "delete") { demoHistory = demoHistory.filter((x) => x.id !== payload.id); return { deleted: payload.id }; }
       const item = { id: Date.now(), title: payload.title, body: payload.body, image_url: payload.image_url, sent_at: new Date().toISOString(), recipients: 0 };
       demoHistory.unshift(item);
@@ -618,6 +730,7 @@
     $("signout").hidden = false;
     loadHistory();
     showTab(load("mnw_tab") || "products");
+    loadSettings();
   }
 
   $("signinForm").addEventListener("submit", async (e) => {
@@ -797,14 +910,16 @@
   // Tabs
   // =====================================================================
   function showTab(name) {
-    if (!["products", "alerts"].includes(name)) name = "products";
-    for (const t of ["products", "alerts"]) {
+    if (!TABS.includes(name)) name = "products";
+    for (const t of TABS) {
       $("tab-" + t).hidden = t !== name;
       $("tabBtn-" + t).setAttribute("aria-selected", String(t === name));
     }
     store("mnw_tab", name);
     if (name === "products") loadProducts();
+    if (name === "ordering" || name === "rewards") loadSettings();
   }
+  const TABS = ["products", "ordering", "rewards", "alerts"];
   document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab)));
 
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -984,6 +1099,158 @@
       err.hidden = false;
     } finally {
       btn.disabled = false; btn.textContent = "Save product";
+    }
+  });
+
+  // =====================================================================
+  // Settings: app ordering (per store) and rewards
+  // =====================================================================
+  const STORE_INFO = {
+    florence: { name: "Matt's Natural World", short: "Florence" },
+    cincinnati: { name: "Susan's Natural World", short: "Cincinnati" },
+  };
+  const WAITS = [10, 15, 20, 30, 45, 60, 90, 120];
+  const waitText = (m) => (m < 60 ? `${m} min` : m % 60 ? `${Math.floor(m / 60)} hr ${m % 60} min` : `${m / 60} ${m === 60 ? "hour" : "hours"}`);
+  let storeSettings = [];
+  let rewardSettings = null;
+
+  async function loadSettings() {
+    try {
+      const res = await callFn({ action: "settings" });
+      storeSettings = res.stores || [];
+      rewardSettings = res.rewards || null;
+      $("orderingSetup").hidden = true;
+      $("rewardsSetup").hidden = true;
+      $("orderingError").hidden = true;
+      renderStores();
+      fillRewards();
+    } catch (ex) {
+      const setup = /settings-schema/.test(ex.message || "");
+      $("orderingSetup").hidden = !setup;
+      $("rewardsSetup").hidden = !setup;
+      $("rewardsForm").hidden = setup;
+      if (!setup) {
+        $("orderingError").textContent = sessionExpired(ex) ? "Your session expired. Sign out and sign in again." : "Couldn't load settings: " + ex.message;
+        $("orderingError").hidden = false;
+      }
+    }
+  }
+
+  function renderStores(flash) {
+    const box = $("storeCards");
+    box.innerHTML = "";
+    let paused = 0;
+    for (const id of ["florence", "cincinnati"]) {
+      const s = storeSettings.find((x) => x.store === id) || { store: id, orders_open: true, wait_minutes: 20, pause_message: "" };
+      if (!s.orders_open) paused++;
+      const info = STORE_INFO[id];
+      const waits = WAITS.includes(s.wait_minutes) ? WAITS : [...WAITS, s.wait_minutes].sort((a, b) => a - b);
+      const card = document.createElement("article");
+      card.className = "scard" + (s.orders_open ? "" : " paused");
+      card.setAttribute("aria-labelledby", `sc-${id}`);
+      card.innerHTML = `
+        <div class="scard-head">
+          <div><div class="scard-name" id="sc-${id}">${esc(info.name)}</div><div class="o-meta">${esc(info.short)}</div></div>
+          <span class="pill ${s.orders_open ? "open" : "paused"}">${s.orders_open ? "Taking app orders" : "App orders paused"}</span>
+        </div>
+        <button type="button" class="btn full ${s.orders_open ? "danger" : ""}" data-act="toggle">${s.orders_open ? "Pause app orders" : "Resume app orders"}</button>
+        <label id="wl-${id}">Wait time customers see</label>
+        <div class="chips" role="group" aria-labelledby="wl-${id}">
+          ${waits.map((m) => `<button type="button" class="chip" data-wait="${m}" aria-pressed="${m === s.wait_minutes}">${waitText(m)}</button>`).join("")}
+        </div>
+        <label for="pm-${id}">Message while paused <span class="hint">(optional)</span></label>
+        <textarea id="pm-${id}" maxlength="200" placeholder="We're very busy today. App orders are back at 3 PM, or call us to order.">${esc(s.pause_message || "")}</textarea>
+        <div class="actions" style="margin-top:12px">
+          <button type="button" class="btn ghost small" data-act="message">Save message</button>
+          <span class="saved-note" role="status" data-note>${flash && flash.id === id ? esc(flash.text) : ""}</span>
+        </div>
+        <div class="scard-foot">${
+          s.updated_at
+            ? "Last changed " + new Date(s.updated_at).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
+            : "Not changed yet"
+        }${s.orders_open ? "." : ". Customers see your message (or a standard one) and can't send app orders to this store."}</div>`;
+      const note = card.querySelector("[data-note]");
+      const save = async (patch, okText) => {
+        card.querySelectorAll("button, textarea").forEach((b) => (b.disabled = true));
+        note.className = "saved-note";
+        note.textContent = "Saving…";
+        try {
+          const res = await callFn({ action: "store_settings_save", store: id, ...patch });
+          storeSettings = storeSettings.filter((x) => x.store !== id).concat(res.store);
+          renderStores({ id, text: okText });
+        } catch (ex) {
+          card.querySelectorAll("button, textarea").forEach((b) => (b.disabled = false));
+          note.className = "saved-note err";
+          note.textContent = sessionExpired(ex) ? "Your session expired. Sign out and sign in again." : "Couldn't save: " + ex.message;
+        }
+      };
+      card.querySelector('[data-act="toggle"]').addEventListener("click", () =>
+        save({ orders_open: !s.orders_open }, s.orders_open ? "App orders paused." : "App orders are back on."));
+      card.querySelectorAll("[data-wait]").forEach((b) =>
+        b.addEventListener("click", () => save({ wait_minutes: Number(b.dataset.wait) }, `Wait time set to ${waitText(Number(b.dataset.wait))}.`)));
+      card.querySelector('[data-act="message"]').addEventListener("click", () =>
+        save({ pause_message: card.querySelector("textarea").value }, "Message saved."));
+      box.appendChild(card);
+    }
+    $("pausedBadge").hidden = paused === 0;
+    $("pausedBadge").textContent = paused === 2 ? "Both paused" : "Paused";
+  }
+
+  // ----- Rewards -----
+  for (let n = 3; n <= 30; n++) {
+    const o = document.createElement("option");
+    o.value = String(n);
+    o.textContent = `${n} stamps`;
+    $("rStamps").appendChild(o);
+  }
+  function fillRewards() {
+    const r = rewardSettings || { stamps_for_reward: 10, reward_text: "$10 off", earn_rule: "Spend $10 or more in one visit, at either store." };
+    $("rewardsForm").hidden = false;
+    $("rStamps").value = String(r.stamps_for_reward);
+    $("rReward").value = r.reward_text;
+    $("rRule").value = r.earn_rule;
+    updateRewardsPreview();
+  }
+  function updateRewardsPreview() {
+    const n = Number($("rStamps").value) || 10;
+    const reward = $("rReward").value.trim() || "your reward";
+    const rule = $("rRule").value.trim() || "How customers earn a stamp.";
+    $("rwSub").textContent = `Collect a stamp each visit. Fill your card to earn ${reward}.`;
+    $("rwCount").textContent = `${Math.min(3, n)}/${n}`;
+    $("rwStamps").innerHTML = Array.from({ length: n }, (_, i) => `<span class="rw-stamp ${i < 3 ? "on" : ""}">${i < 3 ? "✓" : ""}</span>`).join("");
+    $("rwRule").textContent = rule;
+    $("rwEvery").textContent = `Every ${n} stamps gets you ${reward}.`;
+    $("rRewardCount").textContent = `${$("rReward").value.length} / 40`;
+    $("rRuleCount").textContent = `${$("rRule").value.length} / 160`;
+  }
+  ["rStamps", "rReward", "rRule"].forEach((id) =>
+    $(id).addEventListener("input", () => {
+      $("rSaved").textContent = "";
+      updateRewardsPreview();
+    })
+  );
+  $("rewardsForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = $("rewardsError");
+    err.hidden = true;
+    const reward_text = $("rReward").value.trim();
+    const earn_rule = $("rRule").value.trim();
+    if (!reward_text) { err.textContent = 'Describe the reward, like "$10 off" or "a free smoothie".'; err.hidden = false; return; }
+    if (!earn_rule) { err.textContent = "Say how customers earn a stamp."; err.hidden = false; return; }
+    const btn = $("rSave");
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+    try {
+      const res = await callFn({ action: "reward_settings_save", stamps_for_reward: Number($("rStamps").value), reward_text, earn_rule });
+      rewardSettings = res.rewards;
+      fillRewards();
+      $("rSaved").textContent = "Saved. Customers see it the next time they open their card.";
+    } catch (ex) {
+      err.textContent = sessionExpired(ex) ? "Your session expired. Sign out and sign in again." : "Couldn't save: " + ex.message;
+      err.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Save rewards";
     }
   });
 
